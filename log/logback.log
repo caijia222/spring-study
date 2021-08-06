@@ -1,0 +1,349 @@
+16:15:03.738 [main] INFO  com.caijia.util.DBUtils - 开始获取数据库考链接
+16:15:04.157 [main] INFO  com.caijia.util.DBUtils - 数据库链接获为：com.mysql.jdbc.JDBC4Connection@f2ff811
+16:19:22.950 [main] INFO  com.caijia.util.DBUtils - 开始获取数据库考链接
+16:19:23.520 [main] INFO  com.caijia.util.DBUtils - 数据库链接获为：com.mysql.jdbc.JDBC4Connection@f2ff811
+16:31:12.299 [main] INFO  com.caijia.util.DBUtils - 开始获取数据库考链接
+16:31:12.869 [main] INFO  com.caijia.util.DBUtils - 数据库链接获为：com.mysql.jdbc.JDBC4Connection@568ff82
+16:31:12.907 [main] INFO  com.caijia.util.DBUtils - Student [id=10, name=小王, gender=1, grade=3, score=90]
+16:46:47.204 [main] INFO  com.caijia.util.DBUtils - 开始执行插入
+16:46:47.210 [main] INFO  com.caijia.util.DBUtils - 开始获取数据库考链接
+16:46:47.659 [main] INFO  com.caijia.util.DBUtils - 数据库链接获为：com.mysql.jdbc.JDBC4Connection@568ff82
+16:46:47.742 [main] INFO  com.caijia.util.DBUtils - 插入执行结果=1
+16:46:47.777 [main] ERROR com.caijia.util.DBUtils - 插入异常
+java.sql.SQLException: Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement().
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.StatementImpl.getGeneratedKeys(StatementImpl.java:1693)
+	at com.caijia.util.DBUtils.insertByPreparedStatement(DBUtils.java:87)
+	at com.caijia.Main.main(Main.java:7)
+16:50:38.778 [main] INFO  com.caijia.util.DBUtils - 开始执行插入
+16:50:38.783 [main] INFO  com.caijia.util.DBUtils - 开始获取数据库考链接
+16:50:39.250 [main] INFO  com.caijia.util.DBUtils - 数据库链接获为：com.mysql.jdbc.JDBC4Connection@f2ff811
+16:50:39.326 [main] INFO  com.caijia.util.DBUtils - 插入执行结果=1
+16:50:39.346 [main] ERROR com.caijia.util.DBUtils - 插入异常
+java.sql.SQLException: Column 'id' not found.
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.ResultSetImpl.findColumn(ResultSetImpl.java:1078)
+	at com.mysql.jdbc.ResultSetImpl.getLong(ResultSetImpl.java:2736)
+	at com.caijia.util.DBUtils.insertAndGetKeyByPreparedStatement(DBUtils.java:104)
+	at com.caijia.Main.main(Main.java:7)
+16:51:19.261 [main] INFO  com.caijia.util.DBUtils - 开始执行插入
+16:51:19.265 [main] INFO  com.caijia.util.DBUtils - 开始获取数据库考链接
+16:51:19.872 [main] INFO  com.caijia.util.DBUtils - 数据库链接获为：com.mysql.jdbc.JDBC4Connection@f2ff811
+16:51:19.944 [main] INFO  com.caijia.util.DBUtils - 插入执行结果=1
+16:51:19.958 [main] ERROR com.caijia.util.DBUtils - 插入异常
+java.sql.SQLException: Before start of result set
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.ResultSetImpl.checkRowPos(ResultSetImpl.java:790)
+	at com.mysql.jdbc.ResultSetImpl.getLong(ResultSetImpl.java:2655)
+	at com.mysql.jdbc.ResultSetImpl.getLong(ResultSetImpl.java:2651)
+	at com.caijia.util.DBUtils.insertAndGetKeyByPreparedStatement(DBUtils.java:104)
+	at com.caijia.Main.main(Main.java:7)
+16:52:25.704 [main] INFO  com.caijia.util.DBUtils - 开始执行插入
+16:52:25.708 [main] INFO  com.caijia.util.DBUtils - 开始获取数据库考链接
+16:52:26.364 [main] INFO  com.caijia.util.DBUtils - 数据库链接获为：com.mysql.jdbc.JDBC4Connection@f2ff811
+16:52:26.454 [main] INFO  com.caijia.util.DBUtils - 插入执行结果=1
+16:52:26.455 [main] INFO  com.caijia.util.DBUtils - 生成id=16
+16:55:31.398 [main] INFO  com.caijia.util.DBUtils - 开始执行更新
+16:55:31.402 [main] INFO  com.caijia.util.DBUtils - 开始获取数据库考链接
+16:55:31.901 [main] INFO  com.caijia.util.DBUtils - 数据库链接获为：com.mysql.jdbc.JDBC4Connection@f2ff811
+16:55:32.000 [main] INFO  com.caijia.util.DBUtils - 更新执行结果=1
+10:52:54.426 [main] INFO  com.caijia.util.DBUtils - 开始执行插入
+10:52:55.125 [main] INFO  com.caijia.util.DBUtils - 插入执行结果=1
+10:52:55.126 [main] INFO  com.caijia.util.DBUtils - 生成id=17
+10:53:07.414 [main] INFO  com.caijia.util.DBUtils - 开始执行插入
+10:53:07.419 [main] INFO  com.caijia.util.DBUtils - 开始获取数据库考链接
+10:53:07.915 [main] INFO  com.caijia.util.DBUtils - 数据库链接获为：com.mysql.jdbc.JDBC4Connection@f2ff811
+10:53:08.058 [main] INFO  com.caijia.util.DBUtils - 插入执行结果=[1, 1]
+11:38:24.380 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+11:38:25.027 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+11:38:25.028 [main] INFO  com.caijia.util.DBUtils - 开始执行查询
+11:38:25.045 [main] INFO  com.caijia.util.DBUtils - Student [id=1, name=小明, gender=1, grade=1, score=88]
+11:38:25.045 [main] INFO  com.caijia.util.DBUtils - Student [id=2, name=小红, gender=1, grade=1, score=95]
+11:38:25.045 [main] INFO  com.caijia.util.DBUtils - Student [id=3, name=小军, gender=0, grade=1, score=93]
+11:38:25.045 [main] INFO  com.caijia.util.DBUtils - Student [id=4, name=小白, gender=0, grade=1, score=100]
+11:38:25.046 [main] INFO  com.caijia.util.DBUtils - Student [id=5, name=小牛, gender=1, grade=2, score=96]
+11:38:25.046 [main] INFO  com.caijia.util.DBUtils - Student [id=6, name=小兵, gender=1, grade=2, score=99]
+11:38:25.046 [main] INFO  com.caijia.util.DBUtils - Student [id=7, name=小强, gender=0, grade=2, score=86]
+11:38:25.046 [main] INFO  com.caijia.util.DBUtils - Student [id=8, name=小乔, gender=0, grade=2, score=79]
+11:38:25.047 [main] INFO  com.caijia.util.DBUtils - Student [id=9, name=小青, gender=1, grade=3, score=85]
+11:38:25.047 [main] INFO  com.caijia.util.DBUtils - Student [id=10, name=小王, gender=1, grade=3, score=90]
+11:38:25.047 [main] INFO  com.caijia.util.DBUtils - Student [id=11, name=小林, gender=0, grade=3, score=91]
+11:38:25.048 [main] INFO  com.caijia.util.DBUtils - Student [id=12, name=小贝, gender=0, grade=3, score=77]
+11:38:25.048 [main] INFO  com.caijia.util.DBUtils - Student [id=13, name=张三, gender=1, grade=3, score=90]
+11:38:25.048 [main] INFO  com.caijia.util.DBUtils - Student [id=14, name=李四, gender=1, grade=3, score=99]
+11:38:25.049 [main] INFO  com.caijia.util.DBUtils - Student [id=15, name=王五, gender=1, grade=3, score=100]
+11:38:25.049 [main] INFO  com.caijia.util.DBUtils - Student [id=16, name=王六, gender=1, grade=3, score=88]
+11:38:25.049 [main] INFO  com.caijia.util.DBUtils - Student [id=17, name=王六, gender=1, grade=3, score=60]
+11:38:25.050 [main] INFO  com.caijia.util.DBUtils - Student [id=18, name=张三, gender=1, grade=3, score=90]
+11:38:25.050 [main] INFO  com.caijia.util.DBUtils - Student [id=19, name=王五, gender=1, grade=3, score=68]
+09:28:28.126 [main] WARN  o.s.c.s.ClassPathXmlApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userServie' defined in class path resource [application.xml]: Cannot resolve reference to bean 'mailServie' while setting bean property 'mailServie'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'mailServie' available
+09:31:56.395 [main] WARN  o.s.c.s.ClassPathXmlApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in class path resource [application.xml]: Cannot resolve reference to bean 'dataSource' while setting bean property 'dataSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [application.xml]: Error setting property values; nested exception is org.springframework.beans.NotWritablePropertyException: Invalid property 'maxPoolSize' of bean class [com.zaxxer.hikari.HikariDataSource]: Bean property 'maxPoolSize' is not writable or has an invalid setter method. Does the parameter type of the setter match the return type of the getter?
+09:32:41.383 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+09:32:41.998 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+09:32:42.054 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-07-29T09:32:42.037375461+08:00[Asia/Shanghai]
+15:02:05.395 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'javax.sql.DataSource' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+15:03:44.929 [main] INFO  com.caijia.util.DBUtils - DBUtils.getDataSource被调用
+15:03:44.942 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:03:45.368 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:03:45.476 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-07-29T15:03:45.453328408+08:00[Asia/Shanghai]
+15:05:25.788 [main] INFO  com.caijia.util.DBUtils - DBUtils.getDataSource被调用
+15:05:25.802 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:05:26.195 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:05:26.326 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-07-29T15:05:26.303730406+08:00[Asia/Shanghai]
+15:05:26.385 [main] ERROR com.caijia.service.BookService - 查询失败
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'learnjdbc.book' doesn't exist
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:944)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2495)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1903)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2011)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at com.caijia.service.BookService.getBook(BookService.java:28)
+	at com.caijia.AppConfig.main(AppConfig.java:23)
+15:13:19.518 [main] INFO  com.caijia.util.DBUtils - DBUtils.getDataSource被调用
+15:13:19.533 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:13:20.001 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:13:20.171 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-07-29T15:13:20.140242086+08:00[Asia/Shanghai]
+14:24:39.124 [main] INFO  com.caijia.util.DBUtils - DBUtils.getDataSource被调用
+14:24:39.144 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:24:39.897 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:24:40.078 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-07-30T14:24:40.049252482+08:00[Asia/Shanghai]
+16:03:24.080 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+16:03:24.122 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:03:24.781 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:03:24.973 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-07-30T08:03:24.952196571Z
+16:04:47.036 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+16:04:47.051 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:04:47.611 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:04:47.908 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-07-30T16:04:47.883534379+08:00[Asia/Shanghai]
+16:17:51.974 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+16:17:51.988 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:17:52.566 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:17:52.619 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = Asia/Shanghai
+16:17:52.837 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-07-30T16:17:52.798901761+08:00[Asia/Shanghai]
+16:20:16.944 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+16:20:16.960 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:20:17.601 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:20:17.650 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailService': Unsatisfied dependency expressed through field 'zoneId'; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'java.time.ZoneId' available: expected single matching bean but found 2: createZoneOfZ,createZoneOfUTC8
+16:20:17.653 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+16:20:17.671 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+16:21:29.669 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+16:21:29.683 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:21:30.203 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:21:30.271 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mailService': Unsatisfied dependency expressed through field 'zoneId'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'utc8' defined in com.caijia.AppConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [java.time.ZoneId]: Factory method 'createZoneOfUTC8' threw exception; nested exception is java.time.DateTimeException: Invalid ID for region-based ZoneId, invalid format: UTC8+08:00
+16:21:30.273 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+16:21:30.281 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+16:21:50.568 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+16:21:50.585 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:21:51.076 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:21:51.123 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+16:21:51.286 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-07-30T16:21:51.268412092+08:00[UTC+08:00]
+11:27:45.263 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+11:27:45.296 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+11:27:45.856 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+11:27:45.901 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+11:27:45.950 [main] INFO  com.caijia.AppConfig - 获取从数据源
+11:27:46.082 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-02T11:27:46.067342999+08:00[UTC+08:00]
+14:55:54.744 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+14:55:54.756 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'getMasterDataSource' defined in com.caijia.AppConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'getMasterDataSource' threw exception; nested exception is java.lang.IllegalArgumentException: Cannot find property file: db.properties
+14:59:10.515 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+14:59:10.539 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:59:10.990 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:59:11.044 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+14:59:11.082 [main] INFO  com.caijia.AppConfig - 获取从数据源
+14:59:11.188 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-02T14:59:11.166816574+08:00[UTC+08:00]
+15:01:28.499 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+15:01:28.527 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:01:30.088 [main] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLException: Access denied for user 'learn'@'localhost' (using password: YES)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:871)
+	at com.mysql.jdbc.MysqlIO.proceedHandshakeWithPluggableAuthentication(MysqlIO.java:1714)
+	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1224)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2199)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2230)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2025)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:778)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:386)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:112)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:118)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:376)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:205)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:448)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:519)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:113)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:72)
+	at com.caijia.AppConfig.getMasterDataSource(AppConfig.java:56)
+	at com.caijia.AppConfig$$EnhancerBySpringCGLIB$$51b24dce.CGLIB$getMasterDataSource$0(<generated>)
+	at com.caijia.AppConfig$$EnhancerBySpringCGLIB$$51b24dce$$FastClassBySpringCGLIB$$96afc7e.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at com.caijia.AppConfig$$EnhancerBySpringCGLIB$$51b24dce.getMasterDataSource(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:484)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:116)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.context.annotation.AnnotationConfigApplicationContext.<init>(AnnotationConfigApplicationContext.java:89)
+	at com.caijia.AppConfig.main(AppConfig.java:38)
+15:01:30.094 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'getMasterDataSource' defined in com.caijia.AppConfig: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'getMasterDataSource' threw exception; nested exception is com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Access denied for user 'learn'@'localhost' (using password: YES)
+15:32:53.429 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMasterDataSource' defined in com.caijia.AppConfig: Unsatisfied dependency expressed through method 'getMasterDataSource' parameter 3; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "${app.connectionTimeout}"
+15:34:53.504 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMasterDataSource' defined in com.caijia.AppConfig: Unsatisfied dependency expressed through method 'getMasterDataSource' parameter 3; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "${app.connectionTimeout}"
+15:37:42.148 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMasterDataSource' defined in com.caijia.AppConfig: Unsatisfied dependency expressed through method 'getMasterDataSource' parameter 3; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "${app.connectionTimeout}"
+15:39:41.683 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMasterDataSource' defined in com.caijia.AppConfig: Unsatisfied dependency expressed through method 'getMasterDataSource' parameter 3; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "${app.connectionTimeout}"
+15:40:24.134 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMasterDataSource' defined in com.caijia.AppConfig: Unsatisfied dependency expressed through method 'getMasterDataSource' parameter 3; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "${app.connectionTimeout}"
+15:41:30.913 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMasterDataSource' defined in com.caijia.AppConfig: Unsatisfied dependency expressed through method 'getMasterDataSource' parameter 3; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "${app.connectionTimeout}"
+15:46:04.883 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'getMasterDataSource' defined in com.caijia.AppConfig: Unsatisfied dependency expressed through method 'getMasterDataSource' parameter 5; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "${app.maximumPoolSize}"
+15:53:13.017 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+15:53:13.038 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:53:13.436 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:53:13.501 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = Z
+15:53:13.533 [main] INFO  com.caijia.AppConfig - 获取从数据源
+15:53:13.642 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-02T07:53:13.62274987Z
+15:54:24.427 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+15:54:24.444 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:54:24.954 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:54:25.025 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = Z
+15:54:25.075 [main] INFO  com.caijia.AppConfig - 获取从数据源
+15:54:25.242 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-02T07:54:25.219647643Z
+15:57:24.353 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+15:57:24.385 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:57:24.850 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:57:24.915 [main] INFO  com.caijia.AppConfig - Z
+15:57:24.916 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = Z
+15:57:24.952 [main] INFO  com.caijia.AppConfig - 获取从数据源
+15:57:25.075 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-02T07:57:25.044252792Z
+15:59:27.344 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+15:59:27.367 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:59:27.866 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:59:27.931 [main] INFO  com.caijia.AppConfig - Z
+15:59:27.933 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = Z
+15:59:27.962 [main] INFO  com.caijia.AppConfig - 获取从数据源
+15:59:28.084 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-02T07:59:28.061154651Z
+15:59:43.614 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+15:59:43.643 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:59:44.138 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:59:44.201 [main] INFO  com.caijia.AppConfig - shenme??===Z
+15:59:44.203 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = Z
+15:59:44.234 [main] INFO  com.caijia.AppConfig - 获取从数据源
+15:59:44.356 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-02T07:59:44.332387646Z
+16:00:37.082 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+16:00:37.100 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:00:37.719 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:00:37.784 [main] INFO  com.caijia.AppConfig - shenme??===UTC+08:00
+16:00:37.785 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+16:00:37.841 [main] INFO  com.caijia.AppConfig - 获取从数据源
+16:00:37.968 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-02T16:00:37.944456672+08:00[UTC+08:00]
+16:08:48.946 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+16:08:49.007 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+16:08:49.035 [main] INFO  com.caijia.AppConfig - 获取从数据源
+16:08:49.079 [main] ERROR com.zaxxer.hikari.HikariConfig - HikariPool-1 - dataSource or dataSourceClassName or jdbcUrl is required.
+16:08:49.084 [main] ERROR com.caijia.service.UserService - 登陆失败
+java.lang.IllegalArgumentException: dataSource or dataSourceClassName or jdbcUrl is required.
+	at com.zaxxer.hikari.HikariConfig.validate(HikariConfig.java:897)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:94)
+	at com.caijia.service.UserService.login(UserService.java:63)
+	at com.caijia.AppConfig.main(AppConfig.java:38)
+16:10:19.449 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+16:10:19.464 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:10:19.942 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:10:20.013 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+16:10:20.046 [main] INFO  com.caijia.AppConfig - 获取从数据源
+16:10:20.189 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-02T16:10:20.165218887+08:00[UTC+08:00]
+11:30:13.878 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+11:30:13.907 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+11:30:14.703 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+11:30:14.768 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+11:30:14.965 [main] INFO  com.caijia.AppConfig - 获取从数据源
+11:30:15.009 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] start User com.caijia.service.UserService.login(String,String)
+11:30:15.009 [main] INFO  com.caijia.aspect.LoggingAspect - [before] do access check
+11:30:15.106 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-04T11:30:15.080545573+08:00[UTC+08:00]
+11:30:15.129 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] done User com.caijia.service.UserService.login(String,String)
+11:31:34.504 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+11:31:34.517 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+11:31:34.969 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+11:31:35.013 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+11:31:35.107 [main] INFO  com.caijia.AppConfig - 获取从数据源
+11:31:35.169 [main] INFO  com.caijia.aspect.LoggingAspect - [before] do access check
+11:31:35.251 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] start void com.caijia.service.MailService.sendLoginMail(User)
+11:31:35.316 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-04T11:31:35.280614703+08:00[UTC+08:00]
+11:31:35.317 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] done void com.caijia.service.MailService.sendLoginMail(User)
+11:33:37.893 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+11:33:37.916 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+11:33:38.608 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+11:33:38.670 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+11:33:38.778 [main] INFO  com.caijia.AppConfig - 获取从数据源
+11:33:38.827 [main] INFO  com.caijia.aspect.LoggingAspect - [before] do access check
+11:33:38.882 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] start void com.caijia.service.MailService.sendLoginMail(User)
+11:33:38.882 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] done void com.caijia.service.MailService.sendLoginMail(User)
+12:33:51.685 [main] INFO  com.caijia.AppConfig - DBUtils.getDataSource被调用
+12:33:51.698 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+12:33:52.198 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+12:33:52.311 [main] INFO  com.caijia.service.MailService - Init mail service with zoneId = UTC+08:00
+12:33:52.429 [main] INFO  com.caijia.AppConfig - 获取从数据源
+12:33:52.495 [main] INFO  com.caijia.aspect.LoggingAspect - [before] do access check
+12:33:52.597 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] start void com.caijia.service.MailService.sendLoginMail(User)
+12:33:52.683 [main] INFO  com.caijia.service.MailService - Hi, Bob! You are logged in at 2021-08-04T12:33:52.640484988+08:00[UTC+08:00]
+12:33:52.684 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] done void com.caijia.service.MailService.sendLoginMail(User)
+12:33:52.760 [main] INFO  com.caijia.aspect.LoggingAspect - [before] do access check
+12:33:52.853 [main] INFO  com.caijia.service.UserService - 注册成功
+12:33:52.854 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] start void com.caijia.service.MailService.sendRegistrationMail(User)
+12:33:52.854 [main] INFO  com.caijia.service.MailService - Welcome, 蔡佳!
+12:33:52.855 [main] INFO  com.caijia.aspect.LoggingAspect - [Around] done void com.caijia.service.MailService.sendRegistrationMail(User)
+12:33:52.855 [main] INFO  com.caijia.aspect.MetricAspect - [Metric] register: 86

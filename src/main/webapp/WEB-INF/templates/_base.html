@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+{% if user == null %}
+<a href="/signin" style="align-content: center;">Sign In</a>
+{% else %}
+<span>Welcome {{user.name}}</span>&nbsp;&nbsp;<a href="/signout" style="align-content: center;">Sign Out</a>
+{% endif %}
+
+{% block main %}
+{% endblock %}
+</body>
+</html>
