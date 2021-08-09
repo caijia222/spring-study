@@ -5,6 +5,7 @@ import java.time.ZoneId;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.caijia.bean.Book;
 import com.caijia.bean.User;
@@ -48,12 +50,11 @@ public class AppConfig {
 	}
 
 	@Bean
-	@Primary
-	DataSource getMasterDataSource(@Value("${db.jdbcUrl}") String jdbcUrl, @Value("${db.username}") String username,
+	DataSource getMasterDataSource(@Value("${db.url}") String jdbcUrl, @Value("${db.username}") String username,
 			@Value("${db.password}") String password, @Value("${db.connectionTimeout}") long connectionTimeout,
 			@Value("${db.idleTimeout}") long idleTimeout, @Value("${db.maximumPoolSize}") int maximumPoolSize)
 			throws IOException {
-		log.info("DBUtils.getDataSource被调用");
+		log.info("获取mysql数据源");
 		HikariConfig config = new HikariConfig();
 		config.setJdbcUrl(jdbcUrl);
 		config.setUsername(username);
@@ -65,12 +66,25 @@ public class AppConfig {
 	}
 
 	@Bean
-	@Qualifier("slave")
-	DataSource getSlaveDataSource() {
-		log.info("获取从数据源");
-		return null;
+	@Primary
+	@Qualifier("hsqldb")
+	DataSource getSlaveDataSource(@Value("${jdbc.url}") String jdbcUrl,@Value("${jdbc.username}") String jdbcUsername,@Value("${jdbc.password}") String jdbcPassword) {
+		log.info("获取hsqldb数据源");
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl(jdbcUrl);
+        config.setUsername(jdbcUsername);
+        config.setPassword(jdbcPassword);
+        config.addDataSourceProperty("autoCommit", "true");
+        config.addDataSourceProperty("connectionTimeout", "5");
+        config.addDataSourceProperty("idleTimeout", "60");
+        return new HikariDataSource(config);
 	}
 
+	@Bean
+	JdbcTemplate createJdbcTemplate(@Autowired DataSource dataSource) {
+		return new JdbcTemplate(dataSource);
+	}
+	
 	@Bean("z")
 	ZoneId createZoneOfZ() {
 		return ZoneId.of("Z");
