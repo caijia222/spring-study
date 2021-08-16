@@ -9,8 +9,8 @@ import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.caijia.bean.Book;
-import com.caijia.bean.User;
+import com.caijia.entity.Book;
+import com.caijia.entity.User;
 
 public class CartService {
 	private Logger logger = LoggerFactory.getLogger(getClass());

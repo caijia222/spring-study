@@ -10,8 +10,9 @@ import javax.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.caijia.bean.User;
+import com.caijia.entity.User;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,10 +22,6 @@ public class MailService {
 	@Autowired(required = false)
 	@Qualifier("utc8")
 	private ZoneId zoneId = ZoneId.systemDefault();
-
-	public void setZoneId(ZoneId zoneId) {
-		this.zoneId = zoneId;
-	}
 
 	@PostConstruct
 	public void init() {
@@ -44,6 +41,7 @@ public class MailService {
 		log.info(String.format("Hi, %s! You are logged in at %s", user.getName(), getTime()));
 	}
 
+	@Transactional
 	public void sendRegistrationMail(User user) {
 		log.info(String.format("Welcome, %s!", user.getName()));
 	}

@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.caijia.bean.Book;
+import com.caijia.entity.Book;
 
 import lombok.Cleanup;
 

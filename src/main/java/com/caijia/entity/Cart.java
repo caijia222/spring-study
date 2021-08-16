@@ -1,4 +1,4 @@
-package com.caijia.bean;
+package com.caijia.entity;
 
 import java.util.ArrayList;
 import java.util.List;

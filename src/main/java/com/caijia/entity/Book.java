@@ -1,4 +1,4 @@
-package com.caijia.bean;
+package com.caijia.entity;
 
 import lombok.Builder;
 import lombok.Data;
