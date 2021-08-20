@@ -1,12 +1,15 @@
-{% extends "_base.html" %}
+{% extends "_base.html" %} {% block main %}
+<table>
+	<tr>
+		<th>ID</th>
+		<th>姓名</th>
+		<th>邮箱</th>
+	</tr>
+	<tr>
+		<td>{{user.id}}</td>
+		<td>{{user.name}}</td>
+		<td>{{user.email}}</td>
+	</tr>
+</table>
 
-{% block main %}
-
-<h3>Profile</h3>
-
-<p><img class="rounded" style="width:80px;height:80px" src="{{ user.imageUrl }}"></p>
-<p>Email: {{ user.email }}</p>
-<p>Name: {{ user.name }}</p>
-<p>Registered at: {{ user.createdDateTime }}</p>
-
-{% endblock %}
+{% endblock%}
