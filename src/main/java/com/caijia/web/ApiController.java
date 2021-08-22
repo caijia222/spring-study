@@ -1,9 +1,12 @@
 package com.caijia.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,12 +21,11 @@ import com.caijia.entity.SignInBean;
 import com.caijia.entity.User;
 import com.caijia.service.UserService;
 
-import lombok.extern.slf4j.Slf4j;
-
 @RestController
 @RequestMapping("/api")
-@Slf4j
 public class ApiController {
+	private Logger log = LoggerFactory.getLogger(getClass());
+
 	@Autowired
 	UserService userService;
 	
@@ -55,7 +57,10 @@ public class ApiController {
 				List<User> users = userService.getAllUsers();
 				result.setResult(users);
 			}catch (Exception e) {
-				result.setErrorResult(Map.of("error", e.getClass().getSimpleName(), "message", e.getMessage()));
+				Map<String, String> map = new HashMap<>();
+				map.put("error", e.getClass().getSimpleName());
+				map.put("message", e.getMessage());
+				result.setErrorResult(map);
 			}
 		}).start();
 		return result;
@@ -70,12 +75,15 @@ public class ApiController {
 	
 	@PostMapping("/signin")
 	public Map<String,Object> signin(@RequestBody SignInBean signInBean){
+		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			User user = userService.signin(signInBean.email, signInBean.password);
 			log.info("reponse=" + user);
-			return Map.of("user", user);
+			map.put("user", user);
+			return map;
 		} catch (Exception e) {
-			return Map.of("error", "SIGNIN_FAILED");
+			map.put("error", "SIGNIN_FAILED");
+			return map;
 		}
 	}
 	

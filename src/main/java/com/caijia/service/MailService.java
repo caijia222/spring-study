@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -14,11 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.caijia.entity.User;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Component
-@Slf4j
 public class MailService {
+	private Logger log = LoggerFactory.getLogger(getClass());
+
 	@Autowired(required = false)
 	@Qualifier("utc8")
 	private ZoneId zoneId = ZoneId.systemDefault();

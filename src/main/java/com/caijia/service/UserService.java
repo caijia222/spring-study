@@ -2,6 +2,8 @@ package com.caijia.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,11 +12,10 @@ import com.caijia.aspect.MetricTime;
 import com.caijia.entity.User;
 import com.caijia.mapper.UserMapper;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Component
-@Slf4j
 public class UserService {
+	private Logger log = LoggerFactory.getLogger(getClass());
+
 	@Autowired
 	private UserMapper userMapper;
 	@Autowired

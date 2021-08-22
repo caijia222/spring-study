@@ -14,6 +14,8 @@ import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -41,11 +43,8 @@ import com.mitchellbosecke.pebble.spring.servlet.PebbleViewResolver;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Configuration
 @ComponentScan
-@Slf4j
 @PropertySource("classpath:/app.properties")
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
@@ -53,6 +52,7 @@ import lombok.extern.slf4j.Slf4j;
 @EnableWebMvc
 public class AppConfig {
 
+	private static final Logger log = LoggerFactory.getLogger(AppConfig.class);
 	public static void main(String[] args) throws Exception {
 		Tomcat tomcat = new Tomcat();
 		tomcat.setPort(Integer.getInteger("port", 8080));

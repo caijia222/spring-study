@@ -1,9 +1,12 @@
 package com.caijia.web;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,11 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.caijia.entity.User;
 import com.caijia.service.UserService;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Controller
-@Slf4j
 public class UserController {
+	private Logger log = LoggerFactory.getLogger(getClass());
 	@Autowired
 	UserService userService;
 
@@ -66,7 +67,10 @@ public class UserController {
 	}
 
 	@ExceptionHandler(RuntimeException.class)
-	public ModelAndView handleUnknowException(Exception ex) {
-		return new ModelAndView("500.html", Map.of("error", ex.getClass().getSimpleName(), "message", ex.getMessage()));
+	public ModelAndView handleUnknowException(Exception e) {
+		Map<String,String> map = new HashMap<>();
+		map.put("error", e.getClass().getSimpleName());
+		map.put("message", e.getMessage());
+		return new ModelAndView("500.html", map);
 	}
 }

@@ -13,11 +13,10 @@ import org.springframework.stereotype.Component;
 
 import com.caijia.entity.Book;
 
-import lombok.Cleanup;
 
 @Component
 public class BookService {
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+	private Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	private DataSource dataSource;
 
@@ -27,17 +26,14 @@ public class BookService {
 
 	public Book getBook(int id) {
 		try {
-			@Cleanup
 			Connection conn = dataSource.getConnection();
-			@Cleanup
 			PreparedStatement pstmt = conn.prepareStatement("select * from book where id = ?");
 			pstmt.setLong(1, id);
-			@Cleanup
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				String name = rs.getString("name");
 				String author = rs.getString("author");
-				Book book = Book.builder().id(id).name(name).author(author).build();
+				Book book = new Book(id, name, author);
 				return book;
 			}
 		} catch (Exception e) {

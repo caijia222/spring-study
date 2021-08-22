@@ -9,7 +9,7 @@ public class PasswordValidator implements Validator {
 
 	@Override
 	public void validate(String email, String password, String name) {
-		if (name == null || name.isBlank() || name.length() > 20) {
+		if (name == null || "".equals(name) || name.length() > 20) {
 			throw new IllegalArgumentException("invalid name: " + name);
 		}
 	}
