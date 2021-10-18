@@ -18,7 +18,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.caijia.entity.User;
 import com.caijia.service.UserService;
 
-@Order(2)
+@Order(3)
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
 	private static final Logger log = LoggerFactory.getLogger(AuthInterceptor.class);

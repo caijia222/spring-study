@@ -20,7 +20,6 @@
 			<param-name>async-supported</param-name>
 			<param-value>true</param-value>
 		</init-param>
-		<!-- <async-supported>true</async-supported> -->
 	</filter>
 
 	<filter-mapping>

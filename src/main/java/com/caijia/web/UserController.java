@@ -9,68 +9,103 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.caijia.entity.User;
+import com.caijia.service.MessagingService;
 import com.caijia.service.UserService;
 
 @Controller
 public class UserController {
-	private Logger log = LoggerFactory.getLogger(getClass());
+
+	public static final String KEY_USER = "__user__";
+
+	final Logger logger = LoggerFactory.getLogger(getClass());
+
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	MessagingService messagingService;
+
 	@GetMapping("/")
-	public ModelAndView index() {
-		return new ModelAndView("index.html");
+	public ModelAndView index(HttpSession session) {
+		User user = (User) session.getAttribute(KEY_USER);
+		Map<String, Object> model = new HashMap<>();
+		if (user != null) {
+			model.put("user", model);
+		}
+		return new ModelAndView("index.html", model);
+	}
+
+	@GetMapping("/register")
+	public ModelAndView register() {
+		return new ModelAndView("register.html");
+	}
+
+	@PostMapping("/register")
+	public ModelAndView doRegister(@RequestParam("email") String email, @RequestParam("password") String password,
+			@RequestParam("name") String name) {
+		try {
+			User temp = new User();
+			temp.setEmail(email);
+			temp.setPassword(password);
+			temp.setName(name);
+			temp.setCreatedAt(System.currentTimeMillis());
+			User user = userService.register(temp);
+			logger.info("user registered: {}", user.getEmail());
+			messagingService.sendMialMessage(user);
+		} catch (Exception e) {
+			logger.error("Register failed", e);
+			Map<String,String> map = new HashMap<String, String>();
+			map.put("email", email);
+			map.put("error", "Register failed");
+			return new ModelAndView("register.html", map);
+		}
+		return new ModelAndView("redirect:/signin");
 	}
 
 	@GetMapping("/signin")
-	public ModelAndView signin() {
+	public ModelAndView signin(HttpSession session) {
+		User user = (User) session.getAttribute(KEY_USER);
+		if (user != null) {
+			return new ModelAndView("redirect:/profile");
+		}
 		return new ModelAndView("signin.html");
 	}
-	
-	@GetMapping("/signout")
-	public ModelAndView signout(HttpSession session) {
-		session.removeAttribute("user");
-		return new ModelAndView("index.html");
-	}
-	
+
 	@PostMapping("/signin")
-	public ModelAndView signin(@RequestParam String email, @RequestParam String password, HttpSession session) {
-		User user = userService.signin(email, password);
-		session.setAttribute("user", user);
-		return new ModelAndView("index.html", "user", user);
-	}
-
-	@GetMapping("/user/profile")
-	public ModelAndView profile(HttpSession session) {
-		User user = (User)session.getAttribute("user");
-		if(user != null) {
-			return new ModelAndView("profile.html","user",user);
-		}else {
-			return new ModelAndView("index.html");
+	public ModelAndView doSignin(@RequestParam("email") String email, @RequestParam("password") String password,
+			HttpSession session) {
+		try {
+			User user = userService.signin(email, password);
+			session.setAttribute(KEY_USER, user);
+		} catch (RuntimeException e) {
+			Map<String,String> map = new HashMap<String, String>();
+			map.put("email", email);
+			map.put("error", "Register failed");
+			return new ModelAndView("signin.html", map);
 		}
+		return new ModelAndView("redirect:/profile");
 	}
 
-	@PostMapping(value = "/rest", consumes = "application/json;charset=utf-8", produces = "application/json;charset=utf-8")
-	@ResponseBody
-	public String rest(@RequestBody User user) {
-		log.info("REST接口响应收到参数user={}", user);
-		return "{\"restSupport\":true}";
+	@GetMapping("/profile")
+	public ModelAndView profile(HttpSession session) {
+		User user = (User) session.getAttribute(KEY_USER);
+		if (user == null) {
+			return new ModelAndView("redirect:/signin");
+		}
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("user", user);
+		return new ModelAndView("profile.html", map);
 	}
 
-	@ExceptionHandler(RuntimeException.class)
-	public ModelAndView handleUnknowException(Exception e) {
-		Map<String,String> map = new HashMap<>();
-		map.put("error", e.getClass().getSimpleName());
-		map.put("message", e.getMessage());
-		return new ModelAndView("500.html", map);
+	@GetMapping("/signout")
+	public String signout(HttpSession session) {
+		session.removeAttribute(KEY_USER);
+		return "redirect:/signin";
 	}
 }

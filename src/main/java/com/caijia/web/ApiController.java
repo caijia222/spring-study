@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 
-import com.caijia.entity.SignInBean;
 import com.caijia.entity.User;
 import com.caijia.service.UserService;
 
@@ -74,12 +73,12 @@ public class ApiController {
 	}
 	
 	@PostMapping("/signin")
-	public Map<String,Object> signin(@RequestBody SignInBean signInBean){
+	public Map<String,Object> signin(@RequestBody User user){
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			User user = userService.signin(signInBean.email, signInBean.password);
-			log.info("reponse=" + user);
-			map.put("user", user);
+			User login = userService.signin(user.getEmail(), user.getPassword());
+			log.info("reponse=" + login);
+			map.put("user", login);
 			return map;
 		} catch (Exception e) {
 			map.put("error", "SIGNIN_FAILED");

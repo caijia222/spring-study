@@ -1,12 +1,14 @@
 package com.caijia;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.ZoneId;
+import java.util.Properties;
 
+import javax.jms.ConnectionFactory;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
+import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.apache.catalina.Context;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
@@ -22,10 +24,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -36,6 +44,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.loader.ServletLoader;
 import com.mitchellbosecke.pebble.spring.extension.SpringExtension;
@@ -45,15 +55,19 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @ComponentScan
-@PropertySource("classpath:/app.properties")
+@PropertySource({"classpath:/app.properties","classpath:/smtp.properties","classpath:/jms.properties","classpath:/task.properties"})
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
 @MapperScan("com.caijia.mapper")
 @EnableWebMvc
+@EnableJms
+@EnableScheduling
+@EnableMBeanExport
 public class AppConfig {
 
-	private static final Logger log = LoggerFactory.getLogger(AppConfig.class);
+	private static final Logger logger = LoggerFactory.getLogger(AppConfig.class);
 	public static void main(String[] args) throws Exception {
+		logger.info("开始启动内嵌tmocat");
 		Tomcat tomcat = new Tomcat();
 		tomcat.setPort(Integer.getInteger("port", 8080));
 		tomcat.getConnector();
@@ -64,32 +78,21 @@ public class AppConfig {
 		ctx.setResources(resources);
 		tomcat.start();
 		tomcat.getServer().await();
+		logger.info("内嵌tmocat启动完成");
 	}
 
-	@Value("${db.url}")
-	private String jdbcUrl;
-	@Value("${db.username}")
-	private String username;
-	@Value("${db.password}")
-	private String password;
-	@Value("${db.connectionTimeout}")
-	private long connectionTimeout;
-	@Value("${db.idleTimeout}")
-	private long idleTimeout;
-	@Value("${db.maximumPoolSize}")
-	private int maximumPoolSize;
-
 	@Bean
-	@Primary
-	DataSource getMasterDataSource() throws IOException {
-		log.info("获取mysql数据源");
+	DataSource createDataSource(
+			// properties:
+			@Value("${jdbc.url}") String jdbcUrl, @Value("${jdbc.username}") String jdbcUsername,
+			@Value("${jdbc.password}") String jdbcPassword) {
 		HikariConfig config = new HikariConfig();
 		config.setJdbcUrl(jdbcUrl);
-		config.setUsername(username);
-		config.setPassword(password);
-		config.setConnectionTimeout(connectionTimeout);
-		config.setIdleTimeout(idleTimeout);
-		config.setMaximumPoolSize(maximumPoolSize);
+		config.setUsername(jdbcUsername);
+		config.setPassword(jdbcPassword);
+		config.addDataSourceProperty("autoCommit", "false");
+		config.addDataSourceProperty("connectionTimeout", "5");
+		config.addDataSourceProperty("idleTimeout", "60");
 		return new HikariDataSource(config);
 	}
 
@@ -163,5 +166,63 @@ public class AppConfig {
 						.maxAge(3600);
 			}
 		};
+	}
+	
+	// -- javamail configuration ----------------------------------------------
+
+	@Bean
+	JavaMailSender createJavaMailSender(
+			// properties:
+			@Value("${smtp.host}") String host, @Value("${smtp.port}") int port, @Value("${smtp.auth}") String auth,
+			@Value("${smtp.username}") String username, @Value("${smtp.password}") String password,
+			@Value("${smtp.debug:true}") String debug) {
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost(host);
+		mailSender.setPort(port);
+
+		mailSender.setUsername(username);
+		mailSender.setPassword(password);
+
+		Properties props = mailSender.getJavaMailProperties();
+		props.put("mail.transport.protocol", "smtp");
+		props.put("mail.smtp.auth", auth);
+		if (port == 587) {
+			props.put("mail.smtp.starttls.enable", "true");
+		}
+		if (port == 465) {
+			props.put("mail.smtp.socketFactory.port", "465");
+			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		}
+		props.put("mail.debug", debug);
+		return mailSender;
+	}
+	
+	@Bean
+	ConnectionFactory createConnectionFactory(
+			@Value("${jms.uri:tcp://localhost:61616}") String uri,
+			@Value("${jms.username:admin}") String username,
+			@Value("${jms.password:admin}") String password
+			) 
+	{
+		return new ActiveMQConnectionFactory(uri, username, password);
+	}
+	
+	@Bean
+	JmsTemplate createJmsTemplate(@Autowired ConnectionFactory connectionFactory) {
+		return new JmsTemplate(connectionFactory);
+	}
+	
+	@Bean("jmsListenerContainerFactory")
+	DefaultJmsListenerContainerFactory createDefaultJmsListenerContainerFactory(@Autowired ConnectionFactory connectionFactory) {
+		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+		factory.setConnectionFactory(connectionFactory);
+		return factory;
+	}
+	
+	@Bean
+	ObjectMapper createObjectMapper() {
+		ObjectMapper om = new ObjectMapper();
+		om.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		return om;
 	}
 }

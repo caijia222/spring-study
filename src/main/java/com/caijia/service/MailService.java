@@ -1,49 +1,40 @@
 package com.caijia.service;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.caijia.entity.User;
 
 @Component
 public class MailService {
-	private Logger log = LoggerFactory.getLogger(getClass());
 
-	@Autowired(required = false)
-	@Qualifier("utc8")
-	private ZoneId zoneId = ZoneId.systemDefault();
+	@Value("${smtp.from}")
+	String from;
 
-	@PostConstruct
-	public void init() {
-		log.info("Init mail service with zoneId = " + this.zoneId);
-	}
+	@Autowired
+	JavaMailSender mailSender;
 
-	@PreDestroy
-	public void shutdown() {
-		log.info("Shutdown mail service");
-	}
-
-	public String getTime() {
-		return ZonedDateTime.now(zoneId).format(DateTimeFormatter.ISO_DATE_TIME);
-	}
-
-	public void sendLoginMail(User user) {
-		log.info(String.format("Hi, %s! You are logged in at %s", user.getName(), getTime()));
-	}
-
-	@Transactional
 	public void sendRegistrationMail(User user) {
-		log.info(String.format("Welcome, %s!", user.getName()));
+		try {
+			MimeMessage mimeMessage = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+			helper.setFrom(from);
+			helper.setTo(user.getEmail());
+			helper.setSubject("Welcome to Java course!");
+			String html = String.format("<p>Hi, %s,</p><p>Welcome to Java course!</p><p>Sent at %s</p>", user.getName(),
+					LocalDateTime.now());
+			helper.setText(html, true);
+			mailSender.send(mimeMessage);
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

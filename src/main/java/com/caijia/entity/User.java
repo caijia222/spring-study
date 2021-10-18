@@ -1,53 +1,84 @@
 package com.caijia.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class User {
 
-	private int id;
-	private String name;
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private String password;
+	private Long id;
+
 	private String email;
-	
-	public User() {
-	}
-	public User(int id, String name, String password, String email) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.password = password;
-		this.email = email;
-	}
-	public int getId() {
+	private String password;
+	private String name;
+
+	private long createdAt;
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+
+	public long getCreatedAt() {
+		return createdAt;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setCreatedAt(long createdAt) {
+		this.createdAt = createdAt;
 	}
-	public String getPassword() {
-		return password;
+
+	public String getCreatedDateTime() {
+		return Instant.ofEpochMilli(this.createdAt).atZone(ZoneId.systemDefault())
+				.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public String getImageUrl() {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] hash = md.digest(this.email.trim().toLowerCase().getBytes(StandardCharsets.UTF_8));
+			return "https://www.gravatar.com/avatar/" + String.format("%032x", new BigInteger(1, hash));
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@JsonIgnore
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + "]";
+		return String.format("User[id=%s, email=%s, name=%s, password=%s, createdAt=%s, createdDateTime=%s]", getId(),
+				getEmail(), getName(), getPassword(), getCreatedAt(), getCreatedDateTime());
 	}
-	
-	
 }
